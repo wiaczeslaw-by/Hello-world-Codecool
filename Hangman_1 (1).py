@@ -1,6 +1,5 @@
 import random
 import os
-I am a Gandalf
 
 row_of_words = "gizmo glowworm glyph gnarly gnostic gossip grogginess haiku haphazard yphen iatrogenic icebox injury ivory" # Строка с словами
 ready_word = [] # Массив с символами введенными пользователем, символы будут записываться только те которых еще не называл пользователь и которые находяться в загаданном слове
