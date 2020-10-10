@@ -17,7 +17,6 @@ def take_grafics_from_f():
     print("Select difficulty:\n    1 - Easy\n    2 - Normal\n    3 - Hard")
     file_dir = os.path.dirname(os.path.abspath(__file__))
     my_file = os.path.join(file_dir, "Grafics.txt")
-    line = ""
     while True:
         try:
             command = int(input("Command - "))
@@ -41,7 +40,6 @@ def take_words_from_f():
     print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals  ")
     file_dir = os.path.dirname(os.path.abspath(__file__))
     my_file = os.path.join(file_dir, "Words.txt")
-    line = ""
     while True:
         try:
             command = int(input("Command - "))
@@ -76,7 +74,7 @@ def start(): # Функция которая служит для базогог�
     for el in range(len(word)):
         word[el] = word[el].lower()
     if "\n" in word:
-        word.remove("\n")
+        word.remove("\n")s
     for element in range(len(word)): # Заполняем массив пустыми символами относительно загаданного слова, данный массив будет обновляться при каждом правильном вводе символа
         ready_word.append("_")
     print(f"You have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
@@ -149,46 +147,3 @@ def main(): #
 
 if __name__ == "__main__": #
     main()
-    
-    
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    """     if lives is 9:
-       print(" \n\n\n\n\n\n / \ ")
-    if lives is 8:
-        print("\n\n\n\n\n  |\n / \ ")
-    if lives is 7:
-        print("\n\n\n\n  |  \n  |\n / \ ")
-    if lives is 6:
-        print("\n\n\n  |\n  |  \n  |\n / \ ")
-    if lives is 5:
-        print("\n\n  |\n  |\n  |  \n  |\n / \ ")
-    if lives is 4:
-        print("\n   ___\n  |\n  |\n  |  \n  |\n / \ ")
-    if lives is 3:
-        print("\n   ___\n  |   |\n  |\n  |  \n  |\n / \ ")
-    if lives is 2:
-        print ("\n   ___\n  |   |\n  |   ò\n  |  / \ \n  |\n / \ ")
-    if lives is 1:
-        print("\n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |\n / \ ")
-    if lives is 0:
-        print("\n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |  / \ \n / \ \n You're HANGMAN!") """
