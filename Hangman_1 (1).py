@@ -15,6 +15,10 @@ hangman = ["",f"{6*n} / \ ",f"   {5*n}  |\n / \ ",f"   {4*n}  |  \n  |\n / \ ",f
 count_end = 0
 attention_wrong_input = False
 
+def take_string_from_f():
+    with open("Words.txt","r") as words_f:
+        
+
 def check_quant_symb (list_check, letter_check): # Функция которая служит для вывода количеста уже введенных символов в массив(в нашем случае проверяем сколько одинаковых букв в массиве history)
     count = 0 
     for element in range(len(list_check)): # Проверяется каждый елемент в масисве
