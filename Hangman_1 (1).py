@@ -15,10 +15,23 @@ hangman = ["",f"{6*n} / \ ",f"   {5*n}  |\n / \ ",f"   {4*n}  |  \n  |\n / \ ",f
 count_end = 0
 attention_wrong_input = False
 
-def take_string_from_f():
-    with open("Words.txt","r") as words_f:
-        
 
+def take_string_from_f():
+    print("Select the type of words:\n  1 - Home\n    2 - Cities\n    3 - Countries\n   4 - Animals")
+    while True:
+        try:
+            command = input("Command - ")
+            with open("Words.txt","r") as words_f:
+                try:
+                    return words_f.readlines()[command-1]
+                except IndexError:
+                    print(f"Please selecet command from 1 to {len(words_f.readlines())}")
+                    continue
+        except ValueError:
+            print("Please input a number!")
+            continue
+
+        
 def check_quant_symb (list_check, letter_check): # Функция которая служит для вывода количеста уже введенных символов в массив(в нашем случае проверяем сколько одинаковых букв в массиве history)
     count = 0 
     for element in range(len(list_check)): # Проверяется каждый елемент в масисве
@@ -34,8 +47,10 @@ def start(): # Функция которая служит для базогог�
     
     os.system("cls || clear")
     hangman.reverse()
-    words = row_of_words.split(" ") # Разделяем строку на слова, разделителем являеться пробел
+    words = take_string_from_f().split(",") # Разделяем строку на слова, разделителем являеться пробел
     word = list(words[random.randint(0,len(words)-1)]) # Выбираем рандомное слово и делим его на символы, помещая в массив
+    if "\n" in word:
+        word.remove("\n")
     for element in range(len(word)): # Заполняем массив пустыми символами относительно загаданного слова, данный массив будет обновляться при каждом правильном вводе символа
         ready_word.append("_")
     print(f"Welcome to Hangman!\nYou have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
