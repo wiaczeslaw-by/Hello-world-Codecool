@@ -28,7 +28,7 @@ def take_grafics_from_f():
                         lives = 8
                     elif command == 3:
                         lives = 6
-                    return words_f.read()
+                    return words_f.read().split(",,")[command-1]
                 except IndexError:
                     print(f"Please selecet command from 1 to {len(words_f.readlines())}")
                     continue
