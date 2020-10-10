@@ -74,7 +74,7 @@ def start(): # Функция которая служит для базогог�
     for el in range(len(word)):
         word[el] = word[el].lower()
     if "\n" in word:
-        word.remove("\n")s
+        word.remove("\n")
     for element in range(len(word)): # Заполняем массив пустыми символами относительно загаданного слова, данный массив будет обновляться при каждом правильном вводе символа
         ready_word.append("_")
     print(f"You have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
