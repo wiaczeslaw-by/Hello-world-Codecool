@@ -28,7 +28,7 @@ def take_grafics_from_f():
                         lives = 8
                     elif command == 3:
                         lives = 6
-                    return words_f.readlines()[command-1]
+                    return words_f.read()
                 except IndexError:
                     print(f"Please selecet command from 1 to {len(words_f.readlines())}")
                     continue
@@ -70,6 +70,7 @@ def start(): # Функция которая служит для базогог�
     os.system("cls || clear")
     print("Welcome to Hangman!")
     hangman = take_grafics_from_f().split(",")
+    hangman.reverse()
     words = take_words_from_f().split(",") # Разделяем строку на слова, разделителем являеться пробел
     word = list(words[random.randint(0,len(words)-1)]) # Выбираем рандомное слово и делим его на символы, помещая в массив
     for el in range(len(word)):
