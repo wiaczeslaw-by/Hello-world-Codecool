@@ -1,4 +1,4 @@
-Bookshelf,Hammock,Chandelier,blanked,wardrobe
-Paris,Rome,Helsinki,Rotterdam
-Russia,India,Germany,Luxembourg,Italy,France
-Racoon,Lemur,Hippopotamus,hedgehog,squirrel
+bookshelf,hammock,chandelier,blanked,wardrobe
+paris,rome,helsinki,rotterdam
+russia,lndia,lermany,luxembourg,italy,france
+racoon,lemur,hippopotamus,hedgehog,squirrel
