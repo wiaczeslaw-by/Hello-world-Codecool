@@ -1,4 +1,4 @@
-Television
-Kiev
-Ukraine
-Dog
+Bookshelf,Hammock,Chandelier,blanked,wardrobe
+Paris,Rome,Helsinki,Rotterdam
+Russia,India,Germany,Luxembourg,Italy,France
+Racoon,Lemur,Hippopotamus,hedgehog,squirrel

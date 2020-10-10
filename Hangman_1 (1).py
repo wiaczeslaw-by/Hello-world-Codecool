@@ -1,7 +1,6 @@
 import random
 import os
 
-row_of_words = "gizmo glowworm glyph gnarly gnostic gossip grogginess haiku haphazard yphen iatrogenic icebox injury ivory" # Строка с словами
 ready_word = [] # Массив с символами введенными пользователем, символы будут записываться только те которых еще не называл пользователь и которые находяться в загаданном слове
 word = [] # Массив с символами загаданного слова, данный масив будет терять символ если его ввел пользователь.
 history = [] # Массив который будет хранить все символы которые вводит пользователь
@@ -16,13 +15,15 @@ count_end = 0
 attention_wrong_input = False
 
 
-def take_string_from_f():
-    print("Select the type of words:\n  1 - Home\n    2 - Cities\n    3 - Countries\n   4 - Animals")
+def take_words_from_f():
+    print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals")
+    line = ""
     while True:
         try:
-            command = input("Command - ")
-            with open("Words.txt","r") as words_f:
+            command = int(input("Command - "))
+            with open("K:\\Python\\Optimus\\Hello-world-Codecool\\Words.txt","r") as words_f:
                 try:
+                    os.system("cls || clear")
                     return words_f.readlines()[command-1]
                 except IndexError:
                     print(f"Please selecet command from 1 to {len(words_f.readlines())}")
@@ -44,16 +45,16 @@ def start(): # Функция которая служит для базогог�
     global ready_word
     global word
     global hangman
-    
     os.system("cls || clear")
+    print("Welcome to Hangman!")
     hangman.reverse()
-    words = take_string_from_f().split(",") # Разделяем строку на слова, разделителем являеться пробел
+    words = take_words_from_f().split(",") # Разделяем строку на слова, разделителем являеться пробел
     word = list(words[random.randint(0,len(words)-1)]) # Выбираем рандомное слово и делим его на символы, помещая в массив
     if "\n" in word:
         word.remove("\n")
     for element in range(len(word)): # Заполняем массив пустыми символами относительно загаданного слова, данный массив будет обновляться при каждом правильном вводе символа
         ready_word.append("_")
-    print(f"Welcome to Hangman!\nYou have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
+    print(f"You have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
     print(word)
     
 
