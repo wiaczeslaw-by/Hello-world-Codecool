@@ -14,6 +14,29 @@ hangman = ["","\n\n\n\n\n\n / \ ","   \n\n\n\n\n  |\n / \ ","   \n\n\n\n  |  \n 
 count_end = 0
 attention_wrong_input = False
 
+def take_grafics_from_f():
+    global lives
+    print("Select difficulty:\n    1 - Easy\n    2 - Normal\n    3 - Hard")
+    my_file = os.path.dirname(os.path.abspath(__file__)) + "\\" + "Grafics.txt"
+    line = ""
+    while True:
+        try:
+            command = int(input("Command - "))
+            with open(my_file,"r") as words_f:
+                try:
+                    os.system("cls || clear")
+                    if command == 2:
+                        lives = 8
+                    elif command == 3:
+                        lives = 6
+                    return words_f.readlines()[command-1]
+                except IndexError:
+                    print(f"Please selecet command from 1 to {len(words_f.readlines())}")
+                    continue
+        except ValueError:
+            print("Please input a number!")
+            continue
+
 
 def take_words_from_f():
     print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals  ")
@@ -46,7 +69,7 @@ def start(): # Функция которая служит для базогог�
     global hangman
     os.system("cls || clear")
     print("Welcome to Hangman!")
-    hangman.reverse()
+    hangman = take_grafics_from_f().split(",").reverse()
     words = take_words_from_f().split(",") # Разделяем строку на слова, разделителем являеться пробел
     word = list(words[random.randint(0,len(words)-1)]) # Выбираем рандомное слово и делим его на символы, помещая в массив
     for el in range(len(word)):
