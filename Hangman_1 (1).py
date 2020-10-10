@@ -17,11 +17,13 @@ attention_wrong_input = False
 
 def take_words_from_f():
     print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals")
+    THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(THIS_FOLDER, 'Words.txt')
     line = ""
     while True:
         try:
             command = int(input("Command - "))
-            with open("K:\\Python\\Optimus\\Hello-world-Codecool\\Words.txt","r") as words_f:
+            with open(my_file,"r") as words_f:
                 try:
                     os.system("cls || clear")
                     return words_f.readlines()[command-1]
