@@ -10,15 +10,14 @@ n = "\n"
 p = " "
 drawing = "|\n  |\n  |  \n  |\n / \ "
 drawing2 = "\n   ___\n  |   |\n  |   ò\n  |"
-hangman = ["",f"{6*n} / \ ",f"   {5*n}  |\n / \ ",f"   {4*n}  |  \n  |\n / \ ",f"   {3*n}  |\n  |  \n  |\n / \ ",f"   {2*n}  {drawing}",f"\n   ___\n  {drawing}",f"   \n   ___\n  |   {drawing}",f"   {drawing2}  / \ \n  |\n / \ ",f"   {drawing2}  /|\ \n  |\n / \ ",f"   {drawing2}  /|\ \n  |  / \ \n / \ "]
+hangman = ["","\n\n\n\n\n\n / \ ","   \n\n\n\n\n  |\n / \ ","   \n\n\n\n  |  \n  |\n / \ ","   \n\n\n  |\n  |  \n  |\n / \ ","   \n\n  |\n  |\n  |  \n  |\n / \ ","\n   ___\n  |\n  |\n  |  \n  |\n / \ ","   \n   ___\n  |   |\n  |\n  |  \n  |\n / \ ","   \n   ___\n  |   |\n  |   ò\n  |  / \ \n  |\n / \ ","   \n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |\n / \ ","   \n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |  / \ \n / \ "]
 count_end = 0
 attention_wrong_input = False
 
 
 def take_words_from_f():
-    print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals")
-    THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-    my_file = os.path.join(THIS_FOLDER, 'Words.txt')
+    print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals  ")
+    my_file = os.path.dirname(os.path.abspath(__file__)) + "\\" + "Words.txt"
     line = ""
     while True:
         try:
@@ -33,8 +32,7 @@ def take_words_from_f():
         except ValueError:
             print("Please input a number!")
             continue
-
-        
+    
 def check_quant_symb (list_check, letter_check): # Функция которая служит для вывода количеста уже введенных символов в массив(в нашем случае проверяем сколько одинаковых букв в массиве history)
     count = 0 
     for element in range(len(list_check)): # Проверяется каждый елемент в масисве
@@ -42,7 +40,6 @@ def check_quant_symb (list_check, letter_check): # Функция которая
             count +=1
     return count
     
-
 def start(): # Функция которая служит для базогого запуска приложения, приветствий и присвоения значений некоторым переменным
     global ready_word
     global word
@@ -61,7 +58,6 @@ def start(): # Функция которая служит для базогог�
     print(f"You have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
     print(word)
     
-
 def user_input(): # Функция которая отвечает за пользовательский ввод и все что его касссаеться
     print("Please input ANY letter")
     letter = ""
@@ -126,9 +122,6 @@ def main(): #
             break
         prog_output(prog_logic(user_input_variable)) #<=================New(Сократил код с двух до одной строчки)
     winner()
-
-
-
 
 if __name__ == "__main__": #
     main()
