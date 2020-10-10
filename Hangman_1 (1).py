@@ -6,19 +6,40 @@ word = [] # Массив с символами загаданного слова
 history = [] # Массив который будет хранить все символы которые вводит пользователь
 attention_input = False # Это тригер который будет меняться на True если пользователь введет правельный символ второй раз
 lives = 10 # Количество попыток\жизней у пользователя, данная переменная будет уменьшаться если пользователь вводит символ который не существует в загаданном слове
-n = "\n"
-p = " "
-drawing = "|\n  |\n  |  \n  |\n / \ "
-drawing2 = "\n   ___\n  |   |\n  |   ò\n  |"
-hangman = ["","\n\n\n\n\n\n / \ ","   \n\n\n\n\n  |\n / \ ","   \n\n\n\n  |  \n  |\n / \ ","   \n\n\n  |\n  |  \n  |\n / \ ","   \n\n  |\n  |\n  |  \n  |\n / \ ","\n   ___\n  |\n  |\n  |  \n  |\n / \ ","   \n   ___\n  |   |\n  |\n  |  \n  |\n / \ ","   \n   ___\n  |   |\n  |   ò\n  |  / \ \n  |\n / \ ","   \n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |\n / \ ","   \n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |  / \ \n / \ "]
+drawing = []
+drawing2 = []
+hangman = []
 count_end = 0
 attention_wrong_input = False
+
+def take_grafics_from_f():
+    global lives
+    print("Select difficulty:\n    1 - Easy\n    2 - Normal\n    3 - Hard")
+    file_dir = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(file_dir, "Grafics.txt")
+    while True:
+        try:
+            command = int(input("Command - "))
+            with open(my_file,"r") as words_f:
+                try:
+                    os.system("cls || clear")
+                    if command == 2:
+                        lives = 8
+                    elif command == 3:
+                        lives = 6
+                    return words_f.read().split(",,")[command-1]
+                except IndexError:
+                    print(f"Please selecet command from 1 to {len(words_f.readlines())}")
+                    continue
+        except ValueError:
+            print("Please input a number!")
+            continue
 
 
 def take_words_from_f():
     print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals  ")
-    my_file = os.path.dirname(os.path.abspath(__file__)) + "\\" + "Words.txt"
-    line = ""
+    file_dir = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(file_dir, "Words.txt")
     while True:
         try:
             command = int(input("Command - "))
@@ -46,6 +67,7 @@ def start(): # Функция которая служит для базогог�
     global hangman
     os.system("cls || clear")
     print("Welcome to Hangman!")
+    hangman = take_grafics_from_f().split(",")
     hangman.reverse()
     words = take_words_from_f().split(",") # Разделяем строку на слова, разделителем являеться пробел
     word = list(words[random.randint(0,len(words)-1)]) # Выбираем рандомное слово и делим его на символы, помещая в массив
@@ -125,46 +147,3 @@ def main(): #
 
 if __name__ == "__main__": #
     main()
-    
-    
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    """     if lives is 9:
-       print(" \n\n\n\n\n\n / \ ")
-    if lives is 8:
-        print("\n\n\n\n\n  |\n / \ ")
-    if lives is 7:
-        print("\n\n\n\n  |  \n  |\n / \ ")
-    if lives is 6:
-        print("\n\n\n  |\n  |  \n  |\n / \ ")
-    if lives is 5:
-        print("\n\n  |\n  |\n  |  \n  |\n / \ ")
-    if lives is 4:
-        print("\n   ___\n  |\n  |\n  |  \n  |\n / \ ")
-    if lives is 3:
-        print("\n   ___\n  |   |\n  |\n  |  \n  |\n / \ ")
-    if lives is 2:
-        print ("\n   ___\n  |   |\n  |   ò\n  |  / \ \n  |\n / \ ")
-    if lives is 1:
-        print("\n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |\n / \ ")
-    if lives is 0:
-        print("\n   ___\n  |   |\n  |   ò\n  |  /|\ \n  |  / \ \n / \ \n You're HANGMAN!") """
