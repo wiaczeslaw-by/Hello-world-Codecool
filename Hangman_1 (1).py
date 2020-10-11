@@ -12,6 +12,7 @@ hangman = []
 count_end = 0
 attention_wrong_input = False
 
+
 def take_grafics_from_f():
     global lives
     print("Select difficulty:\n    1 - Easy\n    2 - Normal\n    3 - Hard")
