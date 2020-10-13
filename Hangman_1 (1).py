@@ -106,7 +106,7 @@ def prog_logic(user_input): # Данная функция отвечает за 
     global attention_wrong_input
     if check_quant_symb(history,user_input) > 1: #Если количество символов в "истории символов" равных введенному, больше чем 1 тогда меняем тригер на 1, триггер отвечает за сигнализиррование таких случаев 
             attention_input = True # <==================New(Перенес дааное условие в логику, так как оно тут более уместно)
-    if (user_input not in word) and (user_input not in ready_word) and (check_quant_symb(history,user_input) < 2): # Если введенного символа не существует в массиве загаданного слова и массиве который постоянно обновляеться, тогда одно очко попыток
+    if (user_input not in "".join(word).lower() and (user_input not in "".join(ready_word).lower()) and (check_quant_symb(history,user_input) < 2)): # Если введенного символа не существует в массиве загаданного слова и массиве который постоянно обновляеться, тогда одно очко попыток
         lives-=1
         attention_wrong_input = True
     for element in range(len(word)): # Учитывая каждый индекс в массиве загаданного слова
