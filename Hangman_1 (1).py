@@ -12,6 +12,16 @@ hangman = []
 count_end = 0
 attention_wrong_input = False
 
+<<<<<<< HEAD
+=======
+def input_check_quit(text_command):
+    input_command = input(text_command)
+    if(input_command.lower() == "quit"):
+        print("Good bye!")
+        quit()
+    else:
+        return input_command.lower()
+>>>>>>> d3a25d667306107dda4e0bbfa89f6f09b5bffde4
 
 def take_grafics_from_f():
     global lives
@@ -20,7 +30,7 @@ def take_grafics_from_f():
     my_file = os.path.join(file_dir, "Grafics.txt")
     while True:
         try:
-            command = int(input("Command - "))
+            command = int(input_check_quit("Command - "))
             with open(my_file,"r") as words_f:
                 try:
                     os.system("cls || clear")
@@ -43,7 +53,7 @@ def take_words_from_f():
     my_file = os.path.join(file_dir, "Words.txt")
     while True:
         try:
-            command = int(input("Command - "))
+            command = int(input_check_quit("Command - "))
             with open(my_file,"r") as words_f:
                 try:
                     os.system("cls || clear")
@@ -83,9 +93,7 @@ def user_input(): # Функция которая отвечает за поль
     print("Please input ANY letter")
     letter = ""
     while len(letter) != 1: # Цикл проверяет количество символов введенные пользователем, если количество введенных символов не равно 1, тогда повторяем попытки 
-        letter = input("letter - ").lower()
-        if letter.lower() == "quit":
-            break
+        letter = input_check_quit("Command - ")
         history.append(letter)
         if len(letter) != 1: # Если количество символов не равно 1, тогда выводим уведомление <====================New(Добавил вывод предупрежденния)
             print("Numbers of letters aren't equal \"1\"!") 
@@ -101,7 +109,7 @@ def prog_logic(user_input): # Данная функция отвечает за 
     global attention_wrong_input
     if check_quant_symb(history,user_input) > 1: #Если количество символов в "истории символов" равных введенному, больше чем 1 тогда меняем тригер на 1, триггер отвечает за сигнализиррование таких случаев 
             attention_input = True # <==================New(Перенес дааное условие в логику, так как оно тут более уместно)
-    if (user_input not in word) and (user_input not in ready_word) and (check_quant_symb(history,user_input) < 2): # Если введенного символа не существует в массиве загаданного слова и массиве который постоянно обновляеться, тогда одно очко попыток
+    if (user_input not in "".join(word).lower() and (user_input not in "".join(ready_word).lower()) and (check_quant_symb(history,user_input) < 2)): # Если введенного символа не существует в массиве загаданного слова и массиве который постоянно обновляеться, тогда одно очко попыток
         lives-=1
         attention_wrong_input = True
     for element in range(len(word)): # Учитывая каждый индекс в массиве загаданного слова
@@ -138,9 +146,6 @@ def main(): #
     start() 
     while count_end < len(word) and lives > 0: #
         user_input_variable = user_input()
-        if user_input_variable.lower() == "quit":
-            print("Good bye!")
-            break
         prog_output(prog_logic(user_input_variable)) #<=================New(Сократил код с двух до одной строчки)
     winner()
 
