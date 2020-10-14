@@ -1,20 +1,24 @@
 import Hangman_1
-import 
+import HOT_WARM_COLD
 
 def user_input(text):
-    user_input = input(text)
-    if(user_input.lower == "quit"):
+    u_input = input(text)
+    if u_input.lower() == "quit":
         quit()
-    return user_input
+    else:
+        return u_input
 
 
 def main():
     while True:
         print("Please enter the name of game:\n   Hangman\n   Hot-Warm-Cold")
-        user_input = user_input("Game: ")
-        if user_input == "Hangman":
+        game_input = user_input("Game: ")
+        if game_input.lower() == "hangman":
             Hangman_1.main()
-        elif user_input == "hot-warm-cold".lower():
+        elif game_input.lower() == "hot-warm-cold":
+            HOT_WARM_COLD.main()
 
 
-main()
+
+if __name__ == "__main__":
+    main()
