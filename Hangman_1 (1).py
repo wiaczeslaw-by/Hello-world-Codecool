@@ -12,8 +12,6 @@ hangman = []
 count_end = 0
 attention_wrong_input = False
 
-<<<<<<< HEAD
-=======
 def input_check_quit(text_command):
     input_command = input(text_command)
     if(input_command.lower() == "quit"):
@@ -21,7 +19,6 @@ def input_check_quit(text_command):
         quit()
     else:
         return input_command.lower()
->>>>>>> d3a25d667306107dda4e0bbfa89f6f09b5bffde4
 
 def take_grafics_from_f():
     global lives
