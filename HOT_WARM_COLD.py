@@ -21,14 +21,13 @@ def start(): # Funkcja do wprowadzenia podstawowych danych
     print(rand_comp) # Do testowania
 
 def user_input():
-    for j in range(difficulty_level):
-        num = None
-        while num is None:
-            try:
-                num = int(input("Enter number: "))
-                num_user.append(num)
-            except ValueError:
-                print("Miła być liczba!")
+    num = None
+    while num is None:
+        try:
+            num = int(input("Enter number: "))
+            num_user.append(num)
+        except ValueError:
+            print("Miła być liczba!")
 
 def prog_logick():
     global hot_count
