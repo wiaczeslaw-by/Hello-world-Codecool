@@ -4,6 +4,7 @@ import HOT_WARM_COLD
 def user_input(text):
     u_input = input(text)
     if u_input.lower() == "quit":
+        print("Have a good day!")
         quit()
     else:
         return u_input
@@ -11,7 +12,7 @@ def user_input(text):
 
 def main():
     while True:
-        print("Please enter the name of game:\n   Hangman\n   Hot-Warm-Cold")
+        print("Select game:\n--->Hangman\n--->Hot-Warm-Cold")
         game_input = user_input("Game: ")
         if game_input.lower() == "hangman":
             Hangman_1.main()
