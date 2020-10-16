@@ -76,7 +76,12 @@ def start(): # A function which serves as the base for launching the application
     hangman.reverse()
     words = take_words_from_f().split(",") # We divide the string into words, the separator is a space
     word = list(words[random.randint(0,len(words)-1)]) # Select a random word and divide it into characters by placing it in an array
+<<<<<<< HEAD
     word.remove("\n")
+=======
+    if "\n" in word:
+        word.remove("\n")
+>>>>>>> 725cbecb4bbb6083380be7d1eca17ffde36871cc
     for element in range(len(word)): # Filling the array with empty characters relative to the hidden word. this array will be updated every time you enter the correct character
         ready_word.append("_")
     print(f"You have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
