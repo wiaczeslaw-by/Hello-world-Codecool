@@ -1,5 +1,6 @@
 import Hangman_1
 import HOT_WARM_COLD
+import os
 
 def user_input(text):
     u_input = input(text)
@@ -11,6 +12,7 @@ def user_input(text):
 
 
 def main():
+    os.system("cls || clear")
     while True:
         print("Select game:\n   1 - Hangman\n   2 - Hot-Warm-Cold")
         game_input = user_input("Game: ")
