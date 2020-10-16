@@ -9,7 +9,7 @@ lives = 10 # Number of attempts\lives of the user, this variable will decrease i
 count_end = 0
 attention_wrong_input = False
 
-def input_check_quit(text_command):
+def input_check_quit(text_command): # function for exiting the game when writing "QUIT"
     input_command = input(text_command)
     if(input_command.lower() == "quit"):
         print("Good bye!")
@@ -17,7 +17,7 @@ def input_check_quit(text_command):
     else:
         return input_command.lower()
 
-def take_grafics_from_f():
+def take_grafics_from_f(): # a function to draw the graphics from the specified file when you select difficulty level
     global lives
     print("Select difficulty:\n    1 - Easy\n    2 - Normal\n    3 - Hard")
     file_dir = os.path.dirname(os.path.abspath(__file__))
@@ -41,7 +41,7 @@ def take_grafics_from_f():
             continue
 
 
-def take_words_from_f():
+def take_words_from_f(): # function for selecting a category of words and loading them from a specific list
     print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals  ")
     file_dir = os.path.dirname(os.path.abspath(__file__))
     my_file = os.path.join(file_dir, "Words.txt")
@@ -122,7 +122,7 @@ def prog_output(ready_word): # This function is used for displaying game data
     print(word)
     print(f"{lives} attempts remaining")
     print(" ".join(ready_word))
-    if attention_input: #
+    if attention_input: 
        print("History: "+"|".join(history))
        print("Be attentive!")
        attention_input = False
@@ -131,18 +131,18 @@ def prog_output(ready_word): # This function is used for displaying game data
     print(hangman[lives])
     print("\n")
 
-def winner():
+def winner(): # function for checking the win/lose condition in the game
     if count_end >= len(word):
         print("You're WINNER Take a candy!")
     elif lives <=0:
         print("You're HANGMAN!")    
 
-def main(): #
+def main(): # the main function that defines the entry point to the program
     start() 
-    while count_end < len(word) and lives > 0: #
+    while count_end < len(word) and lives > 0: 
         user_input_variable = user_input()
         prog_output(prog_logic(user_input_variable)) 
     winner()
 
-if __name__ == "__main__": #
+if __name__ == "__main__": # function that protects the program from unauthorized launch
     main()
