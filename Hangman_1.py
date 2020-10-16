@@ -19,22 +19,21 @@ def input_check_quit(text_command): # function for exiting the game when writing
 
 def take_grafics_from_f(): # a function to draw the graphics from the specified file when you select difficulty level
     global lives
-    print("Select difficulty:\n    1 - Easy\n    2 - Normal\n    3 - Hard")
     file_dir = os.path.dirname(os.path.abspath(__file__))
     my_file = os.path.join(file_dir, "Grafics.txt")
     while True:
         try:
+            print("Select difficulty:\n    1 - Easy\n    2 - Normal\n    3 - Hard")
             command = int(input_check_quit("Command - "))
             with open(my_file,"r") as words_f:
                 try:
-                    os.system("cls || clear")
                     if command == 2:
                         lives = 8
                     elif command == 3:
                         lives = 6
+                    os.system("cls || clear")
                     return words_f.read().split(",,")[command-1]
                 except IndexError:
-                    print(f"Please select command from 1 to {len(words_f.read().split(",,"))}")
                     continue
         except ValueError:
             print("Please input a number!")
@@ -42,11 +41,11 @@ def take_grafics_from_f(): # a function to draw the graphics from the specified 
 
 
 def take_words_from_f(): # function for selecting a category of words and loading them from a specific list
-    print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals  ")
     file_dir = os.path.dirname(os.path.abspath(__file__))
     my_file = os.path.join(file_dir, "Words.txt")
     while True:
         try:
+            print("Select the type of words:\n    1 - Home\n    2 - Cities\n    3 - Countries\n    4 - Animals  ")
             command = int(input_check_quit("Command - "))
             with open(my_file,"r") as words_f:
                 try:
@@ -90,7 +89,7 @@ def user_input(): # A function that is responsible for user input and everything
         letter = input_check_quit("Command - ")
         history.append(letter)
         if len(letter) != 1: # If the number of characters is not equal to 1, then output a notification
-            print("Numbers of letters aren't equal \"1\"!") 
+            print("Numbers of letters aren't equal \"1\"!")
     return letter
 
 def prog_logic(user_input): # This function is responsible for all the main logic of the global ready_word program
