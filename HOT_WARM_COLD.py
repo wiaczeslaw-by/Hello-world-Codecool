@@ -17,7 +17,7 @@ def start(): # Funkcja do wprowadzenia podstawowych danych
             print("Miała być liczba\nProszę sprobować ponownie")
     for i in range(difficulty_level):
         rand_comp.append(random.randint(0,9))
-    print(rand_comp) # Do testowania
+#    print(rand_comp) # Do testowania
 
 def check_user_input(text):
     u_input = input(text)
@@ -27,8 +27,7 @@ def check_user_input(text):
     return u_input
 
 def user_input():
-    num = None
-    while num is None:
+    while len(num_user) < difficulty_level:
         try:
             num = int(check_user_input("Enter number: "))
             num_user.append(num)
@@ -58,7 +57,7 @@ def prog_output():
     else:
         os.system("cls || clear")
         print(result)
-        print("Your last input: " + str(num_user))
+        print("Your last input: " + "".join(str(num_user)))
         print("Try again")
         num_user.clear()
         hot_count = 0
