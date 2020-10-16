@@ -2,29 +2,35 @@ import random
 import os
 rand_comp = [] # Randomowe liczby od komputera
 num_user = [] # Liczby od użytkownika
-difficulty_level = 0 # Trudność zadania/ilość liczb od komputera oraz użytkownika
+difficulty_level = None # Trudność zadania/ilość liczb od komputera oraz użytkownika
 hot_count = 0 # Count "HOT"
 
 def start(): # Funkcja do wprowadzenia podstawowych danych 
     global difficulty_level
-    is_input_correct = True
-    while(is_input_correct):
+    os.system("cls || clear")
+    print("Welcome to the Hot Warm Cold game")
+    while(difficulty_level == None):
         try:
-            difficulty_level = int(input("Enter complexity: "))
-            is_input_correct = True
+            difficulty_level = int(check_user_input("Enter complexity: "))
         except ValueError:
             os.system("cls || clear")
             print("Miała być liczba\nProszę sprobować ponownie")
-            is_input_correct = False
     for i in range(difficulty_level):
         rand_comp.append(random.randint(0,9))
     print(rand_comp) # Do testowania
+
+def check_user_input(text):
+    u_input = input(text)
+    if u_input.lower() == "quit":
+        print("Have a good day!")
+        quit()
+    return u_input
 
 def user_input():
     num = None
     while num is None:
         try:
-            num = int(input("Enter number: "))
+            num = int(check_user_input("Enter number: "))
             num_user.append(num)
         except ValueError:
             print("Miła być liczba!")
