@@ -12,7 +12,7 @@ def user_input(text):
 
 def main():
     while True:
-        print("Select game:\n--->Hangman\n--->Hot-Warm-Cold")
+        print("Select game:\n---> Hangman\n---> Hot-Warm-Cold")
         game_input = user_input("Game: ")
         if game_input.lower() == "hangman":
             Hangman_1.main()
