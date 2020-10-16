@@ -34,7 +34,7 @@ def take_grafics_from_f(): # a function to draw the graphics from the specified 
                         lives = 6
                     return words_f.read().split(",,")[command-1]
                 except IndexError:
-                    print(f"Please selecet command from 1 to {len(words_f.readlines())}")
+                    print(f"Please select command from 1 to {len(words_f.read().split(",,"))}")
                     continue
         except ValueError:
             print("Please input a number!")
@@ -81,7 +81,7 @@ def start(): # A function which serves as the base for launching the application
     for element in range(len(word)): # Filling the array with empty characters relative to the hidden word. this array will be updated every time you enter the correct character
         ready_word.append("_")
     print(f"You have {lives} attempts to guess the word \nHere is your word - " + " ".join(ready_word))
-    print(word)
+    #print(word)                   #<-------TEST
     
 def user_input(): # A function that is responsible for user input and everything that reads it
     print("Please input ANY letter")
@@ -104,7 +104,6 @@ def prog_logic(user_input): # This function is responsible for all the main logi
     if check_quant_symb(history,user_input) > 1: #If the number of characters in the "history" is equal to the one entered, more than 1, then we change the trigger to 1, the trigger is responsible for signaling such cases 
             attention_input = True 
     if (user_input not in "".join(word).lower() and (user_input not in "".join(ready_word).lower()) and (check_quant_symb(history,user_input) < 2)): # If the entered character does not exist in the array of the hidden word and the array is constantly updated, then one point of attempts
-
         lives-=1
         attention_wrong_input = True
     for element in range(len(word)): # Given each index in the array of the hidden word
@@ -118,8 +117,9 @@ def prog_output(ready_word): # This function is used for displaying game data
     global word
     global attention_input
     global lives
+    global attention_wrong_input
     os.system("cls || clear")
-    print(word)
+    #print(word)                            #<-------- test
     print(f"{lives} attempts remaining")
     print(" ".join(ready_word))
     if attention_input: 
@@ -128,6 +128,7 @@ def prog_output(ready_word): # This function is used for displaying game data
        attention_input = False
     elif attention_wrong_input == True:
         print("History: "+"|".join(history))
+        attention_wrong_input = False
     print(hangman[lives])
     print("\n")
 
